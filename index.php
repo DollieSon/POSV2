@@ -100,6 +100,7 @@
       <div id="MainBot">
         <button id="ResetOutput">Reset Output</button>
         <p id="OutputP">Output:</p>
+        
       </div>
 </div>
 <script >

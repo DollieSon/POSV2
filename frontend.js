@@ -1,6 +1,15 @@
 $(document).ready(function(){
 	ReloadList();
     console.log(some)
+    $(`#Custombtn`).click(function(){
+    	console.log("Set Custom");
+    	CustomChange = $('#Customin').val();
+    	if(CustomChange < TotalCost){
+    		alert("CustomChange is Smaller than Toal Cost");
+    		return;
+    	}
+    	PostOrder(CustomChange);
+    });
 })
 itemlist = {}
 
@@ -33,11 +42,14 @@ function CountTotal(){
 	$(`#Total`).text("Total: "+ TotalCost);
 	caps = [20,50,100,200,500,1000];
 	for(mon of caps){
-		console.log(mon);
+		//console.log(mon);
 		if(TotalCost > mon){
-			console.log("Hiding " + mon + `#C${mon}`);
+			//console.log("Hiding " + mon + `#C${mon}`);
 			
 			$(`#C${mon}`).css({"display":"none"});
+		}else{
+			//console.log("Showing " + `#C${mon}`);
+			$(`#C${mon}`).css({"display":"block"});
 		}
 	}
 }
@@ -74,6 +86,10 @@ function ReloadList(){
 }
 
 function PostOrder(Change){
+	if(Object.keys(itemlist) == ""){
+		console.log("No Orders Found");
+		return;
+	}
 	$.ajax({
 		url:'http://localhost:430/POSV2/post_order.php',
 		type:'POST',
@@ -84,6 +100,10 @@ function PostOrder(Change){
 		},
 		success:function(data){
 			console.log(data);
+			if(data == ""){
+				console.log("successfully sent");
+			}
+			location.reload();
 		},
 		error:function(data){
 
