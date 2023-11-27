@@ -7,5 +7,10 @@
 <body>
 	<div class="headline">
 		<p>POS Ver.2</p>
-
+		<div class="indexbutton">
+			<a href="index.php">Home</a>
+		</div>
+		<div class="additembutton">
+			<a href="AddItem.php">Add-Item</a>
+		</div>
 	</div>

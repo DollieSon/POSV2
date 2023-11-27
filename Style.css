@@ -91,7 +91,12 @@
 }
 
 /*For Version 2*/
+/*Header.php*/
 
+.headline{
+    display: flex;   
+}
+/*Index*/
 .container{
 	display:flex;
 	height: 100%;
@@ -108,4 +113,49 @@
 .itembox{
 	display: flex;
 	flex-wrap: wrap;
+}
+.itembox p{
+    margin-top: 0;
+    margin-bottom: 7px;
+}
+#Coffee{
+    background-color: rgb(126, 215, 193, 1.0);
+}
+#Beverage{
+    background-color: rgb(240, 219, 175, 1.0);
+
+}
+#Snack{
+    background-color: rgb(220, 134, 134);
+
+}
+#Add-on{
+    background-color: rgb(176, 97, 97);
+
+}
+
+.ItemHeader{
+    margin: 0;
+}
+.PastOrder{
+    display: flex;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.IOrder{
+    display: flex;
+    
+}
+.IndOrder{
+    width: 70%;
+}
+.IndOrder p{
+    width: 20%;
+}
+.PastOrder p{
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.OrderSummary{
+    width: 30%;
 }

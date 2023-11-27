@@ -13,8 +13,9 @@
 	$result = $conn->query($querry); 
 	$items = array();
 	if($result){
-		while($items[] = $result->fetch_assoc()){
-			$size++;
+		while($item = $result->fetch_assoc()){
+			$items[$item['Item_ID']] = $item;
+      $size++;
 		}
 		//ofset by 1
 		unset($items["$size"]);
@@ -49,6 +50,7 @@
     echo "string";
   }
 
+  //print_r($allitems);
  ?>
 <!DOCTYPE html>
 <html>
@@ -61,7 +63,7 @@
           <p>Choices:</p>
           <div class="container" id="cont">
             <?php foreach ($allitems as $key => $value) { 
-                echo "<p> $key </p>";
+                echo "<p class = 'ItemHeader' id = '$key'> $key </p>";
               ?>
                 <div id="<?php echo $key ?>" class="itembox" onclick="">
                     <?php foreach ($value as $ikey => $val) { ?>
@@ -98,9 +100,71 @@
         </div>
       </div>
       <div id="MainBot">
-        <button id="ResetOutput">Reset Output</button>
-        <p id="OutputP">Output:</p>
+        <p id="OutputP">Past Orders:</p>
+        <?php 
+
+        $orders = array();
+
+        $query = "SELECT * FROM `order-history-unique` ORDER BY `Date` DESC";
+        $res = $conn->query($query);
         
+        if($res){
+          while($order = $res->fetch_assoc()){
+            $orders[$order['Order_ID']] = $order; 
+          }
+          //array_pop($orders);
+          //print_r($orders);
+          /*foreach ($orders as $key => $value) {
+            print_r($value);
+            echo "<br/>";
+          }*/
+          $Order_IDs = array_map(function($elem){
+            return $elem['Order_ID'];
+          }, $orders);
+          //print_r($Order_IDs);
+          $query = "SELECT * FROM `order_history_single` WHERE `Order_ID` IN (".implode(",", $Order_IDs).")";
+          $res = $conn->query($query);
+          if($res){
+            while($row = $res->fetch_assoc()){
+              $orders[$row['Order_ID']]['Order'][] = $row; 
+              //print_r($row);
+              //echo "<br/>";
+            }
+          }
+          /*
+          foreach ($orders as $key => $value) {
+            echo "Key: $key, Val:";
+            print_r($value);
+            echo "<br/>";
+          }*/
+        }
+
+        foreach ($orders as $Order_Num => $Order) { ?>
+
+          <div class="PastOrder">
+            <div class="IndOrder">
+              <?php foreach ($Order['Order'] as $key => $value) { ?>
+                <div class="IOrder">
+                  <p><?php echo $items[$value['Item_ID']]['Item Name']; ?></p>
+                  <p><?php echo $value['Amount']; ?></p>
+                  <p><?php echo $items[$value['Item_ID']]['Price']; ?></p>
+                  <p><?php echo $value['Total Price']; ?></p>
+                </div>
+              <?php } ?>
+            </div>
+            <div class="OrderSummary">
+              <p>Order ID: <?php echo $Order['Order_ID'] ?></p>
+              <p>Date: <?php echo $Order['Date'] ?></p>
+              <p>Total: <?php echo $Order['Total'] ?></p>
+              <p>Given: <?php echo $Order['Amount_Given'] ?></p>
+              <p>Change: <?php echo $Order['Amount_Given'] - $Order['Total']  ?></p>
+            </div>
+          </div>
+
+          
+          <?php }
+
+         ?>
       </div>
 </div>
 <script >
