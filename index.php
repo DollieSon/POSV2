@@ -62,18 +62,19 @@
         <div id="Left">
           <p>Choices:</p>
           <div class="container" id="cont">
-            <?php foreach ($allitems as $key => $value) { 
-                echo "<p class = 'ItemHeader' id = '$key'> $key </p>";
-              ?>
-                <div id="<?php echo $key ?>" class="itembox" onclick="">
+            <?php foreach ($allitems as $key => $value) { ?> 
+                <div id = "<?php echo "$key"; ?>">
+                  <p class = 'ItemHeader'> <?php echo $key ?> </p>
+                  <div class="itembox" onclick="">
                     <?php foreach ($value as $ikey => $val) { ?>
                       <div class="Item" onclick="AddItem(<?php echo "$val[Item_ID]"; ?>)">
                         <?php echo "<p>".$val["Item Name"]."</p>";
                         echo "<p>".$val["Price"]."</p>"; ?>
                       </div>
                     <?php } ?>
+                  </div>
                 </div>
-
+                
             <?php } ?>
           </div>
         </div>

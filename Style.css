@@ -16,24 +16,24 @@
 }
 #Right,#Left,#Mid{
     flex-direction: column;
+    margin-left: 1%;
+    margin-right: 1%;
 }
 
 #Right{
-    width:20%;
+    width:18%;
 }
 #Mid{
-    width:40%;
+    width:38%;
 }
 #Left{
-    
-    width:40%;
+    width:38%;
 
 }
 
 
 #MainContent{
     height: 100vh;
-    border: 2px solid black;
 }
 
 .Changecard{
@@ -118,29 +118,46 @@ body{
     margin-bottom: 10px;
 }
 .Item{
-	width: 20%;
+	width: 18%;
+    margin: 3px;
+    border: 1px solid var(--ItemBg);
+    border-radius: 5px;
+
 }
 .itembox{
+    width: 100%;
 	display: flex;
 	flex-wrap: wrap;
+    justify-content: center;
 }
 .itembox p{
     margin-top: 0;
     margin-bottom: 7px;
 }
+
+#Coffee,#Beverage,#Snack,#Add-on{
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    margin-top:  5px;
+    align-items: center;
+    align-content: center;
+}
+
 #Coffee{
-    background-color: rgb(126, 215, 193, 1.0);
+    background-color: rgba(126, 215, 193,.7);
 }
 #Beverage{
-    background-color: rgb(240, 219, 175, 1.0);
+    background-color: rgba(240, 219, 175,.7);
 
 }
 #Snack{
-    background-color: rgb(220, 134, 134);
+    background-color: rgba(220, 134, 134,.7);
 
 }
 #Add-on{
-    background-color: rgb(176, 97, 97);
+    background-color: rgba(176, 97, 97,.7);
 
 }
 
@@ -175,12 +192,29 @@ body{
 .InputBox{
     display: flex;
     flex-direction: column;
-    width: 20%;
+    width: 80%;
+}
+.getitem{
+    display: flex;
+    background-color: var(--BoxBg);
+    padding:15px;
+    margin:10px;
+    width: 30%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.centercont{
+    display: flex;
+    justify-content: center;
 }
 
 .MenuBox{
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
 }
 
 .menuitem{
@@ -198,4 +232,61 @@ body{
 .menuitem p{
     margin-top: 0;
     margin-bottom: 7px;
+}
+
+.Category{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.CoffeeHeader,.BeverageHeader,.SnackHeader,.Add-onHeader{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.MenuHeader{
+
+}
+
+.CoffeeHeader{
+    background-color: rgba(126, 215, 193, .7);
+}
+.BeverageHeader{
+    background-color: rgba(240, 219, 175, .7);
+}
+.SnackHeader{
+    background-color: rgba(220, 134, 134,.7);
+}
+.Add-onHeader{
+    background-color: rgba(176, 97, 97,.7);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 1vh;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-button{
+    display: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
