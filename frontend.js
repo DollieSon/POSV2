@@ -31,8 +31,30 @@ function AddItem(Item_ID){
 }
 
 function RemoveItem(Item_ID){
-
+	console.log(`Removing Item ${some[Item_ID]["Item Name"]}`);
+	if(delete itemlist[Item_ID]){
+		console.log(itemlist);
+		ReloadList();
+	}
 }
+
+function DecrementItem(Item_ID){
+	console.log(`Decrementing Item ${some[Item_ID]["Item Name"]}`);
+	if(Object.keys(itemlist).includes(`${Item_ID}`)){
+		itemlist[Item_ID]["count"]--;
+		itemlist[Item_ID]["subtotal"]-=parseInt(some[Item_ID]["Price"]);
+		if(itemlist[Item_ID]["count"] == 0){
+			RemoveItem(Item_ID);
+		}
+	}else{
+		itemlist[Item_ID] = {
+			count:1,
+			subtotal:parseInt(some[Item_ID]["Price"])
+		}
+	}
+	ReloadList();
+}
+
 let TotalCost = 0;
 function CountTotal(){
 	TotalCost = 0;
@@ -79,6 +101,11 @@ function ReloadList(){
 			<p class="OrderCount" >${itemlist[item]["count"]}</p>
 			<p class="OrderIPrice">${some[item]["Price"]}</p>
 			<p class="OrderTotal" >${itemlist[item]["subtotal"]}</p>
+			<div class ="Orderbtn">
+				<button class="MiniBtn" onclick='AddItem(${item})'>+</button>
+				<button class="MiniBtn" onclick='DecrementItem(${item})'>-</button>
+				<button class="MiniBtn" onclick='RemoveItem(${item})'>X</button>
+			</div>
 		</div>
 		`);
 	}

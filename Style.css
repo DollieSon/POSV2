@@ -1,3 +1,10 @@
+:root{
+    --ItemBg: rgb(107, 36, 12);
+    --SectorBg: rgb(153, 77, 28);
+    --BoxBg: rgb(228, 143, 69);
+    --BgMain: rgb(245, 204, 160);
+}
+
 #MainTop,#Right,#Left,#Mid{
     display: flex;
 
@@ -91,6 +98,9 @@
 }
 
 /*For Version 2*/
+body{
+    background-color: var(--BgMain);
+}
 /*Header.php*/
 
 .headline{
@@ -158,4 +168,33 @@
 }
 .OrderSummary{
     width: 30%;
+}
+
+/*AddItem.php*/
+
+.InputBox{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+}
+
+.MenuBox{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.menuitem{
+    display: flex;
+    flex-direction: column;
+    width: 17%;
+    margin-bottom: 10px;
+    margin-right: 1.5%;
+    margin-left: 1.5%;
+    background-color: var(--BoxBg);
+    border-radius: 10px;
+}
+.menuitem p{
+    margin-top: 0;
+    margin-bottom: 7px;
+    margin-left: 10px;
 }
