@@ -272,6 +272,9 @@ body{
   width: 1vh;
 }
 
+::-webkit-scrollbar:horizontal{
+  height: 1vh;
+}
 /* Track */
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
@@ -283,10 +286,48 @@ body{
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888;
+    height: 20%;
+    border-radius: 10px;
+    background: rgb(255, 143, 143);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+button{
+    background-color: rgb(154, 222, 123);
+    border: 1px solid rgb(80, 141, 105);
+    border-radius: 5px;
+}
+
+/*Order History*/
+
+.OrderBoxHistory{
+    width: 28%;
+    display: flex;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+}
+.ItemBoxHistory{
+    display: flex;
+}
+
+.containerH{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.SingleOrder{
+    width: 70%;
+}
+
+.OrderDetailHistory{
+    width: 30%;
+}
+
+.ItemBoxHistory p {
+    margin-left: 5px;
+    margin-right: 5px;
 }

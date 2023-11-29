@@ -7,10 +7,13 @@
 <body>
 	<div class="headline">
 		<p>POS Ver.2</p>
-		<div class="indexbutton">
+		<div class="redirect indexbtn">
 			<a href="index.php">Home</a>
 		</div>
-		<div class="additembutton">
+		<div class="redirect AddItembtn">
 			<a href="AddItem.php">Add-Item</a>
+		</div>
+		<div class="redirect Historybtn">
+			<a href="Order_History.php">Order History</a>
 		</div>
 	</div>

@@ -100,7 +100,7 @@
 		<?php } ?>
 
 	</div>
-
+	
 <?php include('Templates/footer.php') ?>
 
 </html>
