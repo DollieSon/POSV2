@@ -17,13 +17,13 @@ $itemlist = GetAllItems();
 function PrintStats($StatList)
 {
 	global $itemlist;
-	$str = "<div class='StatCount'>";
+	$str = "<div class='TotalStat'><p>Total:" . $StatList["Profit"] . "</p></div>";
+	$str .= "<div class='StatCount'>";
 	foreach ($StatList["Count"] as $key => $value) {
 		$str .= "<div class='IndivStat'><p class='ItemNameStat'>" . $itemlist[$key]["Item Name"] . "</p>";
 		$str .= "<p class = 'ItemCountStat'>" . $value . "</p></div>";
 	}
 	$str .= "</div>";
-	$str .= "<div class='TotalStat'><p>Total:" . $StatList["Profit"] . "</p></div>";
 	return $str;
 }
 
@@ -40,7 +40,7 @@ function PrintStats($StatList)
 			//print_r($Day);
 			?>
 			<p class="statTitle">Today</p>
-			<div class="LeftCont">
+			<div class="LeftCont ContStat">
 				<?php echo PrintStats($Day); ?>
 			</div>
 		</div>
@@ -50,7 +50,7 @@ function PrintStats($StatList)
 			//print_r($Week);
 			?>
 			<p class="statTitle">This Week</p>
-			<div class="MidCont">
+			<div class="MidCont ContStat">
 				<?php echo PrintStats($Week); ?>
 			</div>
 		</div>
@@ -60,7 +60,7 @@ function PrintStats($StatList)
 			//print_r($OverAll);
 			?>
 			<p class="statTitle">Month</p>
-			<div class="RightCont">
+			<div class="RightCont ContStat">
 				<?php echo PrintStats($Month); ?>
 			</div>
 		</div>
@@ -70,7 +70,7 @@ function PrintStats($StatList)
 			//print_r($OverAll);
 			?>
 			<p class="statTitle">OverAll (365 Days)</p>
-			<div class="RightCont">
+			<div class="RightCont ContStat">
 				<?php echo PrintStats($OverAll); ?>
 			</div>
 		</div>

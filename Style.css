@@ -3,6 +3,10 @@
     --SectorBg: rgb(153, 77, 28);
     --BoxBg: rgb(228, 143, 69);
     --BgMain: rgb(245, 204, 160);
+    --C1:rgba(159, 192, 136,.8);
+    --C2:rgba(232, 192, 125,.8);
+    --C3:rgba(204, 112, 75,.8);
+    --C4:rgba(97, 65, 36,.8);
 }
 
 #MainTop,#Right,#Left,#Mid{
@@ -12,7 +16,7 @@
 
 #MainTop{
     flex-direction: row;
-    height: 70%;
+    height: 50%;
 }
 #Right,#Left,#Mid{
     flex-direction: column;
@@ -33,7 +37,7 @@
 
 
 #MainContent{
-    height: 100vh;
+    height: 160vh;
 }
 
 .Changecard{
@@ -85,7 +89,7 @@
 }
 
 #MainBot{
-    height: 25%;
+    height: 50%;
     overflow-y: auto;
     overflow-x: hidden ;
 }
@@ -146,19 +150,16 @@ body{
 }
 
 #Coffee{
-    background-color: rgba(126, 215, 193,.7);
+    background-color: var(--C1);
 }
 #Beverage{
-    background-color: rgba(240, 219, 175,.7);
-
+    background-color: var(--C2);
 }
 #Snack{
-    background-color: rgba(220, 134, 134,.7);
-
+    background-color: var(--C3);
 }
 #Add-on{
-    background-color: rgba(176, 97, 97,.7);
-
+    background-color: var(--C4);
 }
 
 .ItemHeader{
@@ -187,6 +188,8 @@ body{
     width: 30%;
 }
 
+
+
 /*AddItem.php*/
 
 .InputBox{
@@ -199,7 +202,7 @@ body{
     background-color: var(--BoxBg);
     padding:15px;
     margin:10px;
-    width: 30%;
+    width: 20%;
     justify-content: center;
     flex-direction: column;
     align-items: center;
@@ -208,63 +211,128 @@ body{
 .centercont{
     display: flex;
     justify-content: center;
-}
-
-.MenuBox{
-    display: flex;
-    flex-wrap: wrap;
     flex-direction: column;
-    align-items: center;
+    height: 100vh;
+    margin-left: .5%;
+    margin-right: .5%;
 }
 
-.menuitem{
+.AddHeader{
+    margin:0;
+}
+
+
+.TopAdd{
+    height: 20%;
+}
+
+.MidAdd{
+    height: 60%;
     display: flex;
-    flex-direction: column;
-    width: 17%;
-    margin-bottom: 10px;
-    margin-right: 1.5%;
-    margin-left: 1.5%;
-    background-color: var(--BoxBg);
-    border-radius: 10px;
-    align-items: center;
-    padding-top: 4px;
-}
-.menuitem p{
-    margin-top: 0;
-    margin-bottom: 7px;
 }
 
-.Category{
+.BotAdd{
+    height: 20%;
+}
+
+.ListAdd{
+    height: 90%;
+    width: 98%;
+    margin: 5px;
+    overflow: auto;
+}
+
+
+
+/*Add-on Section*/
+
+.Add-onList{
     display: flex;
-    flex-wrap: wrap;
-    width: 100%;
 }
 
-.CoffeeHeader,.BeverageHeader,.SnackHeader,.Add-onHeader{
-    width: 100%;
+.Add-onList p{
+    margin: 0;
+}
+
+.Add-onItem,.SnackItem{
+    width: 15%;
+    margin-right: 2%;
+}
+
+
+.Add-onItem p ,.SnackItem p{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    border-radius: 10px;
+    justify-content: center;
 }
 
-.MenuHeader{
+.Add-onbox{
+    height: 100%;
+    background-color: var(--C4);
+}
+
+/*Snack Sec*/
+
+.SnackList{
+    display: flex;
+}
+.SnackList p{
+    margin: 0px;
+}
+
+.Snackbox{
+    background-color: var(--C3);
+    height: 100%;
+}
+
+/*Coffee Sec*/
+
+.Coffeebox{
+    width: 40%;
+    background-color: var(--C1);
+}
+
+.CoffeeItem{
+    display: flex;
 
 }
 
-.CoffeeHeader{
-    background-color: rgba(126, 215, 193, .7);
+.CoffeeItem p,.BeverageItem p{
+    margin: 3px;
 }
-.BeverageHeader{
-    background-color: rgba(240, 219, 175, .7);
+
+.CoffeeItem,.BeverageItem{
+    border-bottom: black solid 2px;
+
 }
-.SnackHeader{
-    background-color: rgba(220, 134, 134,.7);
+
+.CoffeeItem_ID,.BeverageItem_ID{
+    width: 5%;
 }
-.Add-onHeader{
-    background-color: rgba(176, 97, 97,.7);
+
+.CoffeeItem_Name,.BeverageItem_Name{
+    width: 30%;
+}
+
+.CoffeePrice,.BeveragePrice{
+    width: 5%;
+}
+
+.CoffeeTags,.BeverageTags{
+    width: 60%;
+}
+/*Deprecated
+.CoffeeCategory,.Category{
+    width: 10%;
+}*/
+
+/*Beverage Sec*/
+
+.Beveragebox{
+    width: 40%;
+    background-color: var(--C2);
+}
+.BeverageItem{
+    display: flex;
 }
 
 /* width */
@@ -336,7 +404,24 @@ button{
 .StatTop{
     display: flex;
     width: 100%;
+    height: 90vh;
 }
+
+.statTitle{
+    height: 2%;
+}
+.ContStat{
+    height: 98%;
+}
+
+.StatCount{
+    height: 90%;
+    overflow: auto;
+}
+.TotalCount{
+    height: 10%;
+}
+
 .statBox{
     width: 23%;
     margin-left: 1.5%;

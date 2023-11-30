@@ -48,16 +48,37 @@ foreach ($allitem as $key => $value) {
 	$res = $conn->query($querry);
 	if ($res) {
 		$size = 0;
-		while ($allitems["$key"][] = $res->fetch_assoc()) {
+		while ($allitem["$key"][] = $res->fetch_assoc()) {
 			$size++;
 		}
-		unset($allitems["$key"]["$size"]);
+		unset($allitem["$key"]["$size"]);
 
 	} else {
 		echo "Semething went wrong with $key";
 	}
 }
 //Redundant -1
+
+function GetBox($BoxName)
+{
+	global $allitem;
+	$str = "<div class = '" . $BoxName . "box BoxAdd'><p class='AddHeader'>$BoxName</p>";
+	$str .= "<div class = '" . $BoxName . "List ListAdd'>";
+	foreach ($allitem[$BoxName] as $key => $value) {
+		$str .= "<div class = '" . $BoxName . "Item ItemAdd'>";
+		foreach ($value as $k => $v) {
+			if ($k == "Category") {
+				continue;
+			}
+			$str .= "<p class ='" . $BoxName . str_replace(" ", "_", $k) . "'>";
+			$str .= "$v</p>";
+		}
+		$str .= "</div>";
+	}
+	$str .= "</div></div>";
+	return $str;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -65,42 +86,32 @@ foreach ($allitem as $key => $value) {
 
 <?php include('Templates/header.php') ?>
 <div class="centercont">
-	<div class="getitem">
-		<p>Add New Item</p>
-		<form action="AddItem.php" method="POST" class="InputBox">
-			<label>Name:</label>
-			<input type="text" name="name">
-			<label>Price:</label>
-			<input type="number" name="price">
-			<label>Tags:</label>
-			<input type="text" name="tags">
-			<label>Category:</label>
-			<input type="text" name="category">
-			<div>
-				<input type="submit" name="submit" value="submit">
-			</div>
-		</form>
+	<div class="TopAdd">
+		<?php echo GetBox("Add-on") ?>
 	</div>
-</div>
-<div class="MenuBox">
-	<!-- Redundant -->
-	<?php foreach ($allitems as $key => $value) { ?>
-		<div class="<?php echo "$key"; ?>Header">
-			<p class="MenuHeader">
-				<?php echo $key ?>
-			</p>
-			<div class="Category">
-				<?php foreach ($value as $ikey => $val) { ?>
-					<div class="menuitem">
-						<?php foreach ($val as $k => $v) {
-							echo "<p>$v</p>";
-						} ?>
-					</div>
-				<?php } ?>
-			</div>
+	<div class="MidAdd">
+		<?php echo GetBox("Coffee") ?>
+		<div class="getitem">
+			<p>Add New Item</p>
+			<form action="AddItem.php" method="POST" class="InputBox">
+				<label>Name:</label>
+				<input type="text" name="name">
+				<label>Price:</label>
+				<input type="number" name="price">
+				<label>Tags:</label>
+				<input type="text" name="tags">
+				<label>Category:</label>
+				<input type="text" name="category">
+				<div>
+					<input type="submit" name="submit" value="submit">
+				</div>
+			</form>
 		</div>
-
-	<?php } ?>
+		<?php echo GetBox("Beverage") ?>
+	</div>
+	<div class="BotAdd">
+		<?php echo GetBox("Snack") ?>
+	</div>
 
 </div>
 
