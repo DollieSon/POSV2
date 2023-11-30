@@ -56,6 +56,16 @@ function PrintStats($StatList)
 		</div>
 		<div class="statRight statBox">
 			<?php
+			$Month = GetStatsTodayToN("30 day");
+			//print_r($OverAll);
+			?>
+			<p class="statTitle">Month</p>
+			<div class="RightCont">
+				<?php echo PrintStats($Month); ?>
+			</div>
+		</div>
+		<div class="statLast statBox">
+			<?php
 			$OverAll = GetStatsTodayToN("365 day");
 			//print_r($OverAll);
 			?>
