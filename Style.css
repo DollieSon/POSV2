@@ -331,3 +331,30 @@ button{
     margin-left: 5px;
     margin-right: 5px;
 }
+
+/* Statistics */
+.StatTop{
+    display: flex;
+    width: 100%;
+}
+.statBox{
+    width: 30%;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+}
+.IndivStat{
+    display: flex;
+    border-bottom: black solid 2px;
+}
+.IndivStat p{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+.ItemCountStat{
+    width: 30%;
+}
+.ItemNameStat{
+    width: 70%;
+}
